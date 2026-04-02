@@ -1,0 +1,76 @@
+﻿@model SMV_InterviewProject.Models.ImageProcessViewModel
+
+@{
+    ViewData["Title"] = "SMV Interview Assessment Project";
+}
+
+<div class="text-center">
+    <h1>Browse image to start</h1>
+    <p>Upload an image to see how cloning and processing will affects RAM</p>
+</div>
+
+<div>
+    <form asp-controller="Home" asp-action="ImageProcessor" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="uploadedFile" class="form-label"><b>Choose image:</b></label>
+            <input type="file" class="form-control" id="uploadedFile" name="uploadedFile" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="testMultiplier" class="form-label"><b>Retest Multiplier:</b></label>
+            <input type="number" class="form-control" id="testMultiplier" name="testMultiplier" value="40" min="1" max="500">
+        </div>
+
+        <button type="submit" class="btn btn-info w-100">Start upload</button>
+    </form>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model?.Error))
+{
+    <div class="alert alert-danger mt-4 text-center">@Model.Error</div>
+}
+
+@if (Model?.peakMemory > 0)
+{
+    <div class="mt-5">
+        <h3 class="text-center">Results</h3>
+        <table class="table table-bordered table-striped mt-3 text-center">
+            <thead class="table">
+                <tr>
+                    <th>Stage</th>
+                    <th>RAM Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Before</td>
+                    <td>@Model.startMemory MB</td>
+                </tr>
+                <tr>
+                    <td>Peak when loading</td>
+                    <td>@Model.peakMemory MB</td>
+                </tr>
+                <tr>
+                    <td>After GC</td>
+                    <td>@Model.endMemory MB</td>
+                </tr>
+                <tr>
+                    <td>Memory Increased</td>
+                    <td>@Model.increaseMemory MB</td>
+                </tr>
+                <tr>
+                    <td>Memory Released</td>
+                    <td>@Model.releaseMemory MB</td>
+                </tr>
+                <tr>
+                    <td>Released Percentage</td>
+                    <td>@Model.releaseMemoryPercentage%</td>
+                </tr>
+                <tr>
+                    <td>Processed Image</td>
+                    <td><img src="@Model.processedImage" class="img-fluid rounded shadow" style="max-height: 400px;" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
