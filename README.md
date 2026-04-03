@@ -1,5 +1,3 @@
-# SMV Interview Assessment Project
-
 ## Overview
 This is an ASP.NET Core MVC web application built on .NET 8 that demonstrates memory management and garbage collection in C# through image processing. [cite: 3] [cite_start]The application uploads images, applies processing effects, and tracks memory usage throughout the system lifecycle.
 
