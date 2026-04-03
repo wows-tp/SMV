@@ -1,5 +1,5 @@
 ## Overview
-This is an ASP.NET Core MVC web application built on .NET 8 that demonstrates memory management and garbage collection in C# through image processing. [cite: 3] [cite_start]The application uploads images, applies processing effects, and tracks memory usage throughout the system lifecycle.
+This is an ASP.NET Core MVC web application built on .NET 8 that demonstrates memory management and garbage collection in C# through image processing. The application uploads images, applies processing effects, and tracks memory usage throughout the system lifecycle.
 
 ## Feature
 * **Image upload**: User selects an image and sets a multiplier
@@ -28,7 +28,7 @@ This is an ASP.NET Core MVC web application built on .NET 8 that demonstrates me
 ### HomeController
 * **Index()**: Display the upload form and result form
 * **ImageProcessor()**: Process uploaded images and track memories
-* **Error()**: Handles error [cite: 28]
+* **Error()**: Handles error
 * **Privacy()**: Default privacy policy page
 
 ### ImageProcessViewModel
